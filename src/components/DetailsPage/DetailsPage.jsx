@@ -14,7 +14,16 @@ function DetailsPage() {
       <h1>Details Page</h1>
 
       <div data-testid="movieDetails">
-        <p>Movie Details</p>
+        {movies.map((movie) => {
+          return (
+            <div data-testid="movieItem">
+              <h3>{movie.title}</h3>
+              <img src={movie.poster} alt={movie.title} />
+              <p><b>Description:</b> {movie.description}</p>
+              <p><b>Genre Names:</b> {movie.genre_names}</p>
+            </div>
+          );
+        })}
       </div>
     </main>
   );

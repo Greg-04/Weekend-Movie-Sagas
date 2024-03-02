@@ -19,7 +19,7 @@ function DetailsPage() {
   return (
     <main data-testid="movieDetails">
       <button data-testid="toList">
-        <Link to="/">back to movie list </Link>
+        <Link to="/">Home</Link>
       </button>
 
       <h1>Details Page</h1>

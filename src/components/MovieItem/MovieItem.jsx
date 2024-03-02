@@ -1,4 +1,6 @@
 import { useHistory } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 function MovieItem({ movie }) {
   const history = useHistory();
@@ -7,6 +9,7 @@ function MovieItem({ movie }) {
     history.push(`/detailsPage/${id}`);
   }
   return (
+    <Grid item className="gridContainer">
     <div data-testid="movieItem">
       <h3>{movie.title}</h3>
       <img
@@ -16,6 +19,7 @@ function MovieItem({ movie }) {
         onClick={() => handleClickDetails(movie.id)}
       />
     </div>
+    </Grid>
   );
 }
 

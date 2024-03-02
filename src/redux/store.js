@@ -9,6 +9,7 @@ function* rootSaga() {
   yield takeEvery('FETCH_MOVIES', fetchAllMovies);
 }
 
+//getting movies
 function* fetchAllMovies() {
   try {
     // Get the movies:
@@ -16,7 +17,7 @@ function* fetchAllMovies() {
     // Set the value of the movies reducer:
     yield put({
       type: 'SET_MOVIES',
-      payload: moviesResponse.data
+      payload: moviesResponse.data,
     });
   } catch (error) {
     console.log('fetchAllMovies error:', error);
@@ -34,7 +35,7 @@ const movies = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 // Used to store the movie genres
 const genres = (state = [], action) => {
@@ -44,7 +45,7 @@ const genres = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 // Create one store that all components can use
 const storeInstance = createStore(
@@ -53,7 +54,7 @@ const storeInstance = createStore(
     genres,
   }),
   // Add sagaMiddleware to our store
-  applyMiddleware(sagaMiddleware, logger),
+  applyMiddleware(sagaMiddleware, logger)
 );
 
 // Pass rootSaga into our sagaMiddleware

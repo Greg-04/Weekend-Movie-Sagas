@@ -1,8 +1,10 @@
+import { useHistory } from 'react-router-dom';
 
 function MovieItem({ movie }) {
-
+  let history = useHistory();
   const handleOnClick = (event) => {
     console.log('Test Image Click');
+    history.push('/detailsPage');
   };
 
   return (

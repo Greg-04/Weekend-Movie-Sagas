@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function DetailsPage() {
   const movies = useSelector((store) => store.movies);
-  console.log('This is my movies', JSON.stringify(movies));
+  const { id } = useParams();
 
   return (
     <main>
@@ -19,8 +20,13 @@ function DetailsPage() {
             <div data-testid="movieItem">
               <h3>{movie.title}</h3>
               <img src={movie.poster} alt={movie.title} />
-              <p><b>Description:</b> {movie.description}</p>
-              <p><b>Genre Names:</b> {movie.genre_names}</p>
+              <p>
+                <b>Description:</b> {movie.description}
+              </p>
+              <p>
+                <b>Genre Names:</b> {movie.genre_names}
+              </p>
+              <p>{id}</p>
             </div>
           );
         })}

@@ -1,12 +1,20 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function MovieItem({ movie }) {
+  const history = useHistory();
+
+  function handleClickDetails(id) {
+    history.push(`/detailsPage/${id}`);
+  }
   return (
     <div data-testid="movieItem">
       <h3>{movie.title}</h3>
-      <Link to={`/detailsPage`}>
-        <img src={movie.poster} alt={movie.title} data-testid="toDetails" />
-      </Link>
+      <img
+        src={movie.poster}
+        alt={movie.title}
+        data-testid="toDetails"
+        onClick={() => handleClickDetails(movie.id)}
+      />
     </div>
   );
 }

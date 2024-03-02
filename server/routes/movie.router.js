@@ -4,6 +4,24 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
   const query = `
+    SELECT * FROM "movies"
+      ORDER BY "title" ASC;
+  `;
+  pool
+    .query(query)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.log('ERROR: Get all movies', err);
+      res.sendStatus(500);
+    });
+});
+
+//new get route
+router.get('/:id', (req, res) => {
+  const movieId = req.params.id;
+  const query = `
   SELECT
 	"movies"."id",
     "movies"."title", 
@@ -23,7 +41,7 @@ GROUP BY
 ORDER BY "movies"."id";
   `;
   pool
-    .query(query)
+    .query(query, [movieId])
     .then((result) => {
       res.send(result.rows);
     })

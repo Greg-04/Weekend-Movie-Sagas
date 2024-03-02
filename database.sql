@@ -75,3 +75,25 @@ VALUES
 (12,6), (12,3),           -- Social Net
 (13,6), (13,10), (13,1),  -- Titanic
 (14,1), (14,2), (14,4);   -- Toy Story
+
+SELECT "movies_genres"."id","movies"."title" AS "movie_title", "genres"."name" AS "genre_name", "movies"."poster", "movies"."description" from "movies_genres"
+JOIN "movies" ON "movies"."id" = "movies_genres"."movie_id"
+JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id";
+
+SELECT
+	"movies"."id",
+    "movies"."title" AS "movie_title", 
+    "movies"."poster", 
+    "movies"."description", 
+    STRING_AGG("genres"."name", ', ') AS "genre_names"
+FROM 
+    "movies_genres"
+JOIN 
+    "movies" ON "movies"."id" = "movies_genres"."movie_id"
+JOIN 
+    "genres" ON "genres"."id" = "movies_genres"."genre_id"
+GROUP BY 
+    "movies"."id",
+    "movies"."poster", 
+    "movies"."description"
+ORDER BY "movies"."id";

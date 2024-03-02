@@ -1,30 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function DetailsPage() {
-  const dispatch = useDispatch();
-  const movies = useSelector((store) => store.movies);
-
-  useEffect(() => {
-    dispatch({ type: 'FETCH_MOVIES' });
-  }, []);
 
   return (
     <main>
-      <Link to="/">
-        <button data-testid="toList">Home</button>
-      </Link>
+      <button data-testid="toList">
+        <Link to="/">back to movie list </Link>
+      </button>
+
       <h1>Details Page</h1>
-      <section className="movies">
-        {movies.map((movie) => {
-          return (
-            <div key={movie.id} data-testid="movieDetails">
-              <img src={movie.poster} alt={movie.title} />
-            </div>
-          );
-        })}
-      </section>
+   
+            <div data-testid="movieDetails">
+              <p>Movie Details</p>
+           </div>
     </main>
   );
 }
@@ -37,7 +25,7 @@ Details Page
 
 [ ] The details page must have a data-testid="movieDetails" attribute.
 
-[ ] The details page must have a "back to movie list" button, which should bring the user back to the Home/List Page.
+[X] The details page must have a "back to movie list" button, which should bring the user back to the Home/List Page.
 
-[ ] The "back to movie list" button must have a data-testid="toList" attribute.
+[X] The "back to movie list" button must have a data-testid="toList" attribute.
 */

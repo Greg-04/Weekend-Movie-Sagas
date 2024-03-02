@@ -12,3 +12,13 @@ function MovieItem({ movie }) {
 }
 
 export default MovieItem;
+
+/*
+[x] This view displays all of the movies in the movie database.
+
+[X ] When a movie poster (<img> element) is clicked, a user should be brought to the details page.
+
+[x] Each of the "movie items" on this page each must have a data-testid="movieItem" attribute.
+
+[ X] Each of the movie items' posters (<img> elements) on this page must have a data-testid="toDetails" attribute.
+*/

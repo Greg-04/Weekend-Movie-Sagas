@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function DetailsPage() {
   const dispatch = useDispatch();
@@ -11,13 +12,14 @@ function DetailsPage() {
 
   return (
     <main>
-      <button>Home</button>
+      <Link to="/">
+        <button data-testid="toList">Home</button>
+      </Link>
       <h1>Details Page</h1>
       <section className="movies">
         {movies.map((movie) => {
           return (
-            <div>
-              <h3>{movie.title}</h3>
+            <div key={movie.id} data-testid="movieDetails">
               <img src={movie.poster} alt={movie.title} />
             </div>
           );
